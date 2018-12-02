@@ -1,4 +1,7 @@
 {
+  "name": "code-style",
+  "version": "1.0.0",
+  "description": "Yohann's styleguide",
   "scripts": {
       "docs:dev": "vuepress dev docs",
       "docs:build": "vuepress build docs"
