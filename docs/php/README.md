@@ -160,3 +160,5 @@ Route::get('my-blog', 'BlogController@index')->name('my-blog');
 ```
 <a href="{{ route('my-blog') }}">My Blog</a>
 ```
+
+Route parameters should use camel case.
