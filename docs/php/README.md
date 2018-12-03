@@ -157,8 +157,90 @@ Route names must use kebab case.
 Route::get('my-blog', 'BlogController@index')->name('my-blog');
 ```
 
-```
+```html
 <a href="{{ route('my-blog') }}">My Blog</a>
 ```
 
 Route parameters should use camel case.
+
+```php
+Route::get('blog/{blogId}', 'BlogController@show');
+```
+
+## Views
+
+View files must be in kebab case.
+
+```
+resources/views/sidebar-first.blade.php
+```
+
+Blade templates must start with a docblock listing available variables and
+variable names must be in camel case.
+
+```PHP
+<?php
+/**
+ * Template for showing the password reset confirmation page.
+ *
+ * Available variables:
+ * - $agent: The user agent from \Jenssegers\Agent\Agent.
+ * - $app_name: The name of the application from the configuration.
+ */
+ ?>
+ @extends('layouts.app')
+```
+
+### Blade templates
+
+Indent using four spaces and don't add space after statements.
+
+```php
+@if ($condition)
+    Show something
+@endif
+```
+
+## Naming classes
+
+### Controllers
+
+Generally controllers are named by the plural form of their corresponding resources
+and a `Controller` suffix.
+
+e.g. `UsersController`
+
+When writing non-resourceful controllers you might come across invokable controllers
+that perform a single action. These can be named by the action they perform again
+suffixed by `Controller`.
+
+e.g. `PerformCleanupController`
+
+### Jobs
+
+Jobs should describe an action.
+
+E.g. `CreateUser` or `PerformDatabaseBackup`
+
+### Events
+
+Events will often be fired before or after the actual event. This should be
+very clear by the tense used in their name.
+
+E.g. `ApprovingLoan` before the action is completed and `LoanApproved` after
+the action is completed.
+
+### Listeners
+
+Listeners will perform an action based on an incoming event. Their name should
+reflect that action with a Listener suffix. This might seem strange at first
+but will avoid naming collisions with jobs.
+
+E.g. `SendInvitationMailListener`
+
+### Mailable
+
+Again to avoid naming collisions we'll suffix mailables with Mail, as they're
+often used to convey an event, action or question.
+
+e.g. `AccountActivatedMail` or `NewEventMail`
